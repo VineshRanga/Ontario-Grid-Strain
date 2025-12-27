@@ -8,6 +8,8 @@ We use IESO demand data and ECCC Toronto Pearson weather from 2019-2025 to train
 
 **Note on 2026 forecasts**: They're synthetic for now. We build the 2026 calendar from 2024's seasonal profile since we don't have real 2026 weather yet. Once we get actual 2026 weather, we can rerun with real data.
 
+**THIS IS AN ACTIVELY UPDATED REPO** I'm looking to factor in power flow, transmission constraints and generation capacity in further commits, look for updates early next year.
+
 ## Definitions
 
 See [docs/GLOSSARY.md](docs/GLOSSARY.md) for full definitions. Quick reference:
