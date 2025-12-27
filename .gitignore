@@ -1,0 +1,63 @@
+# Python / tooling
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+dist/
+build/
+*.egg-info/
+.eggs/
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# Secrets
+.env
+.env.*
+*.pem
+*.key
+*.crt
+credentials.json
+secrets*.json
+*_secret*
+*_password*
+
+# Project-specific: data and generated artifacts
+# We don't commit huge files or generated outputs
+data/raw/
+data/processed/
+artifacts/
+reports/figures/
+reports/*.csv
+reports/REPORT.md
+logs/
+*.parquet
+
+# Keep folder structure (use .gitkeep files)
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!artifacts/.gitkeep
+!reports/figures/.gitkeep
+!logs/.gitkeep
+
