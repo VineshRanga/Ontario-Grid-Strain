@@ -48,11 +48,16 @@ secrets*.json
 data/raw/
 data/processed/
 artifacts/
-reports/figures/
 reports/*.csv
-reports/REPORT.md
 logs/
 *.parquet
+
+# Allow chart images for README display
+!reports/figures/
+!reports/figures/*.png
+
+# Allow generated report for visibility
+!reports/REPORT.md
 
 # Keep folder structure (use .gitkeep files)
 !data/raw/.gitkeep

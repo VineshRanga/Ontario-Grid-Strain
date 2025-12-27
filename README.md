@@ -1,10 +1,12 @@
 # Ontario Grid Strain Scenario Engine
 
-Forecasts Ontario electricity demand using weather and seasonality. Adds AI/data center load scenarios on top to see how grid stress changes. Uses IESO demand data and ECCC Toronto Pearson weather from 2019-2025. Outputs backtest results, scenario tables, figures, and a markdown report.
+This tool forecasts Ontario electricity demand using weather and seasonality, then adds AI/data center load scenarios to see how grid stress changes. It's a planning-oriented forecasting tool, not an operator-grade power systems simulator.
 
-Grid strain here means two things: quarterly peak demand and the count of "high-demand hours" above a threshold. The threshold is the 95th percentile of training demand. More high-demand hours means more time the grid is under stress.
+We use IESO demand data and ECCC Toronto Pearson weather from 2019-2025 to train models, then forecast 2026 (and optionally 2027) with different AI load scenarios. Outputs include backtest results, scenario tables, figures, and a markdown report.
 
-2026 forecasts are synthetic for now. We build the 2026 calendar from 2024's seasonal profile since we don't have real 2026 weather yet.
+**What is "grid strain"?** We measure it two ways: quarterly peak demand and the count of "high-demand hours" above a threshold. The threshold is the 95th percentile of training demand. More high-demand hours means more time the grid is under stress.
+
+**Note on 2026 forecasts**: They're synthetic for now. We build the 2026 calendar from 2024's seasonal profile since we don't have real 2026 weather yet. Once we get actual 2026 weather, we can rerun with real data.
 
 ## Definitions
 
@@ -118,10 +120,14 @@ python -m src all --synthetic-year 2026
 ```
 
 Outputs land in:
-- `reports/REPORT.md` - Main report
-- `reports/figures/*.png` - Plots
+- `reports/REPORT.md` - Main report (also [view it here](reports/REPORT.md))
+- `reports/figures/*.png` - Plots (tracked in git for README display)
 - `artifacts/mlp/*.joblib` - Trained models
 - `data/processed/*.parquet` - Clean datasets
+
+**Note on images**: The chart images in this README are tracked in git so they render on GitHub. If images aren't showing, check that:
+1. The PNG files are committed (not ignored by .gitignore)
+2. Image paths in README use correct relative paths from repo root
 
 ## Pre-commit checks
 
@@ -144,7 +150,9 @@ git rm -r --cached <path>
 git commit -m "Stop tracking generated data"
 ```
 
-Common things to untrack: `data/raw/`, `data/processed/`, `artifacts/`, `reports/figures/`, `reports/*.csv`, `reports/REPORT.md`, any `.parquet` files.
+Common things to untrack: `data/raw/`, `data/processed/`, `artifacts/`, `reports/*.csv`, any `.parquet` files.
+
+**Note**: We DO track `reports/figures/*.png` and `reports/REPORT.md` so they display in the README on GitHub.
 
 ## Repo map
 
