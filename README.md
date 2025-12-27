@@ -50,6 +50,52 @@ Example from 2026: Baseline Q1 peak might be 21,300 MW with 113 high-demand hour
 
 For planning, you care about two things: peak uplift (how much higher the max gets) and how many more hours cross the threshold. Both matter. Peak tells you if you need more capacity. High-hours tells you how often you'll be stressed.
 
+## 2026 Grid Strain Outlook (Scenario-Based)
+
+This section frames what our model outputs suggest for 2026 under different AI/data center load scenarios. It's based on the 2019-2025 demand structure and our scenario engine. This is qualitative framing using scenario deltas, not a real grid simulation or a promise.
+
+**What we're measuring**: "High-demand hours" are hours where demand exceeds 19,431 MW (the 95th percentile of 2019-2023 training demand). This threshold flags stress periods. More hours above it means more operational pressure.
+
+**Important note**: The 2026 baseline is synthetic. We built it from 2024's seasonal profile as a placeholder to validate scenario mechanics. Once we plug in real 2026 weather, the baseline will change, but the scenario deltas (how much AI load adds) should still be informative.
+
+### Demand + Strain (Ontario)
+
+**Base Case** (+350 MW AI load):
+- Q1 2026: Peak demand reaches 21,655 MW (baseline 21,305 MW). High-demand hours jump from 113 to 177 (+64 hours). Winter peaks are manageable, but the system spends more time above the stress threshold.
+- Q3 2026: Peak demand reaches 23,825 MW (baseline 23,475 MW). High-demand hours increase from 411 to 488 (+77 hours). Summer is already tight, so the absolute increase in high-hours is smaller than Q1, but the total count (488 hours) is high.
+
+**Upside Case** (+800 MW AI load):
+- Q1 2026: Peak demand reaches 22,105 MW. High-demand hours jump to 301 (+188 vs baseline). That's a big increase in operational stress.
+- Q3 2026: Peak demand reaches 24,275 MW. High-demand hours reach 605 (+194 vs baseline). Summer peaks get pushed higher, and the system spends over 600 hours above the stress threshold in the quarter.
+
+**Downside Case** (+200 MW AI load):
+- Q1 2026: Peak demand reaches 21,505 MW. High-demand hours increase to 142 (+29 vs baseline). Smaller uplift, less operational pressure.
+- Q3 2026: Peak demand reaches 23,675 MW. High-demand hours increase to 454 (+43 vs baseline). Still adds stress, but more manageable than base or upside cases.
+
+### AI / Data Centre Expansion (What we're modeling)
+
+**Base Case**:
+- We model AI/data center load as an additive MW block (flat ramp across the year), not location-specific. It shifts peaks up and pushes more hours above the stress threshold. This is a simplification: real AI load will have daily patterns and might correlate with demand.
+
+**Upside**:
+- Faster build-out, higher utilization, or more data centers coming online. Looks like the "high" case (+800 MW). This scenario shows what happens if AI expansion is aggressive.
+
+**Downside**:
+- Slower build-out, efficiency gains, demand response programs, or better load management. Looks like the "low" case (+200 MW). This scenario shows what happens if growth is more measured.
+
+### Planning Implications
+
+- **Peak uplift is capacity pressure**: Higher peaks mean you need more generation capacity or imports. The base case adds 350 MW to peaks. Upside adds 800 MW.
+- **High-hours uplift is operational pressure**: More hours above the threshold means more time managing tight supply. Base case adds 64-77 hours per quarter. Upside adds 188-194 hours per quarter.
+- **Summer (Q3) is where the system looks most sensitive**: Baseline Q3 already has 411 high-demand hours. Even the low scenario pushes it to 454. The high scenario reaches 605 hours, which is a lot of operational stress.
+
+### Important Limitations
+
+- **"Strain" is a proxy**: We measure peak demand and hours above a threshold. This is not power flow analysis, transmission constraint modeling, or generator capacity assessment.
+- **AI load is scenario-based**: We add flat MW amounts. Real AI load will have hourly patterns, might correlate with demand (e.g., more cooling load in summer), and will be location-specific (which matters for transmission).
+- **2026 baseline is synthetic**: Until we add real 2026 weather, the baseline is a placeholder. Real weather will change the baseline, but scenario deltas should still be informative.
+- **No outages, transmission bottlenecks, pricing, or generator constraints**: This is demand forecasting only. Real grid planning needs to account for all of these.
+
 ## Charts (what they show + why they matter)
 
 ### Model RMSE Comparison
